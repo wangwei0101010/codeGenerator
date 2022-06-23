@@ -1,0 +1,77 @@
+package ${package.Controller};
+
+
+#if(${restControllerStyle})
+import org.springframework.web.bind.annotation.*;
+#else
+import org.springframework.stereotype.Controller;
+#end
+#if(${superControllerClassPackage})
+import ${superControllerClassPackage};
+#end
+import com.alibaba.fastjson.JSON;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.GetMapping;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.alibaba.fastjson.JSON;
+import org.springframework.stereotype.Component;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import ${package.Service}.${table.serviceName};
+import ${package.Entity}.${entity};
+import java.util.List;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import io.swagger.annotations.Api;
+import lombok.extern.slf4j.Slf4j;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.dfzt.lcs.common.api.vo.Result;
+import com.dfzt.lcs.common.page.PageUtils;
+import com.dfzt.lcs.common.system.query.QueryGenerator;
+import io.swagger.annotations.ApiOperation;
+/**
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+@Slf4j
+@Api(tags="$!{table.comment}")
+@RestController
+@RequestMapping("/sys/${table.entityPath}")
+public class ${table.controllerName} {
+
+
+    @Autowired
+    public ${table.serviceName} i${entity}Service;
+
+
+
+    /*
+    @GetMapping("/list")
+    @ApiOperation("列表接口")
+    public Result<PageUtils<${entity}>> list( ${entity} ${table.entityPath}
+    ,@RequestParam(name = "pageNo", defaultValue = "1") Integer pageNo
+    ,@RequestParam(name = "pageSize", defaultValue = "10") Integer pageSize
+    ,HttpServletRequest req
+    ){
+     try {
+      QueryWrapper<${entity}> queryWrapper = QueryGenerator
+          .initQueryWrapper(${table.entityPath}, req.getParameterMap());
+      Page<${entity}> page = new Page<>(pageNo, pageSize);
+      IPage<${entity}> pageList = i${entity}Service.page(page, queryWrapper);
+      return Result.OK(new PageUtils(pageList));
+    } catch (Exception e) {
+      log.error("异常", e);
+    }
+    return Result.systemError("系统异常");
+    }
+    */
+
+
+}
